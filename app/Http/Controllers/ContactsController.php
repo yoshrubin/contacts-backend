@@ -27,19 +27,39 @@ class ContactsController extends Controller
     {
         $contact = Contact::findOrFail($id);
 
-        return ContactResource::make($contact);
+        return $contact;
     }
 
-    public function list(Request $request)
+    public function list()
     {
-        $perPage = 10;
+        return Contact::paginate(20);
+    }
 
-        $contact = new Contact();
+    public function update($id, Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:30',
+            'phone' => 'required|string|max:15',
+            'title' => 'required|string|max:10',
+            'avatar' => 'required|string|max:50'
+        ]);
 
-        if ($perPage === 'all') {
-            $perPage = $contact->count();
-        }
+        $contact = Contact::findOrFail($id);
 
-        return ContactResource::collection($contact->pagination($perPage));
+        $contact->name = $validated['name'];
+        $contact->phone = $validated['phone'];
+        $contact->title = $validated['title'];
+        $contact->avatar = $validated['avatar'];
+
+        $contact->save();
+
+        return $contact;
+    }
+
+    public function delete($id)
+    {
+        $contact = Contact::findOrFail($id);
+
+        return $contact->delete();
     }
 }

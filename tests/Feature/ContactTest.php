@@ -35,16 +35,16 @@ class ContactTest extends TestCase
         $this->assertEquals($contact['avatar'], $data['avatar']);
     }
 
-    // public function testShowContact()
-    // {
-    //     $contact = Contact::factory()->create();
+    public function testShowContact()
+    {
+        $contact = Contact::factory()->create();
 
-    //     $id = $contact->id;
+        $id = $contact->id;
 
-    //     $response = $this->get('/api/contacts/'.$id);
+        $response = $this->get('/api/contacts/'.$id);
 
-    //     $response->assertStatus(200);
-    // }
+        $response->assertStatus(200);
+    }
 
     public function testListContact()
     {

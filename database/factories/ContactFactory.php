@@ -26,7 +26,7 @@ class ContactFactory extends Factory
         'name' => $this->faker->name,
         'phone' => $this->faker->e164PhoneNumber,
         'title' => $this->faker->title,
-        'avatar' => 'path/to/image.jpg'
+        'avatar' => '/images/User-icon.png',
         ];
     }
 }

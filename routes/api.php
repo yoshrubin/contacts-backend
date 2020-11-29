@@ -19,7 +19,7 @@ use App\Http\Controllers\ContactsController;
 //     return $request->user();
 // });
 
-Route::get('contacts/{id}', [ContactsController::class, 'show']);
+// Route::get('contacts/{id}', [ContactsController::class, 'show']);
 Route::get('contacts', [ContactsController::class ,'list']);
 Route::post('contacts', [ContactsController::class, 'create']);
 Route::put('contacts/{id}', [ContactsController::class, 'update']);

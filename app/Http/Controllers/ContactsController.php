@@ -23,12 +23,12 @@ class ContactsController extends Controller
         );
     }
 
-    public function show($id)
-    {
-        $contact = Contact::findOrFail($id);
+    // public function show($id)
+    // {
+    //     $contact = Contact::findOrFail($id);
 
-        return $contact;
-    }
+    //     return $contact;
+    // }
 
     public function list()
     {
